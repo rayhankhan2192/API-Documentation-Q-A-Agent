@@ -1,0 +1,7 @@
+chromadb
+openai
+sentence-transformers
+tqdm
+beautifulsoup4
+python-dotenv
+ollama

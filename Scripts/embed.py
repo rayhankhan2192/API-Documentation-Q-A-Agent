@@ -29,4 +29,4 @@ def embed_and_store(chunks: Union[List[str], List[dict]], persist_dir: str = "em
 
     collection.add(documents=texts, embeddings=embeddings, ids=ids, metadatas=metadatas)
 
-    print(f"[✅] Stored {len(texts)} documents in collection '{collection_name}' at '{persist_dir}'")
+    print(f"Stored {len(texts)} documents in collection '{collection_name}' at '{persist_dir}'")

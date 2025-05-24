@@ -1,22 +1,14 @@
-# from bs4 import BeautifulSoup
-# import os
-
-# def load_and_parse_docs(doc_path: str) -> list[str]:
-#     if doc_path.endswith('.html'):
-#         with open(doc_path, 'r', encoding='utf-8') as f:
-#             soup = BeautifulSoup(f, 'html.parser')
-#             text = soup.get_text()
-#     else:
-#         with open(doc_path, 'r', encoding='utf-8') as f:
-#             text = f.read()
-#     return [chunk.strip() for chunk in text.split('\n\n') if len(chunk.strip()) > 50]
-
-
 import os
 from bs4 import BeautifulSoup
+import fitz
+from typing import List, Dict
 
-def load_and_parse_docs(doc_dir: str, min_chunk_length: int = 50) -> list[dict]:
-    supported_exts = ('.html', '.md', '.txt')
+def extract_pdf_text(path: str) -> str:
+    doc = fitz.open(path)
+    return "\n".join(page.get_text() for page in doc)
+
+def load_and_parse_docs(doc_dir: str, min_chunk_length: int = 50) -> List[Dict]:
+    supported_exts = ('.html', '.md', '.txt', '.pdf')
     chunks = []
 
     for root, _, files in os.walk(doc_dir):
@@ -25,13 +17,16 @@ def load_and_parse_docs(doc_dir: str, min_chunk_length: int = 50) -> list[dict]:
                 file_path = os.path.join(root, file)
                 ext = os.path.splitext(file)[1]
 
-                with open(file_path, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                    if ext == '.html':
-                        soup = BeautifulSoup(content, 'html.parser')
-                        text = soup.get_text(separator="\n")
-                    else:
-                        text = content
+                if ext == '.pdf':
+                    text = extract_pdf_text(file_path)
+                else:
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        if ext == '.html':
+                            soup = BeautifulSoup(f.read(), 'html.parser')
+                            text = soup.get_text(separator="\n")
+                        else:
+                            text = f.read()
+
                 raw_chunks = [c.strip() for c in text.split('\n\n') if len(c.strip()) >= min_chunk_length]
                 for i, chunk in enumerate(raw_chunks):
                     chunks.append({
@@ -39,5 +34,4 @@ def load_and_parse_docs(doc_dir: str, min_chunk_length: int = 50) -> list[dict]:
                         "source": file_path,
                         "chunk_id": f"{file}_{i}"
                     })
-
     return chunks

@@ -5,13 +5,13 @@ def llm_prompt(question: str, context_chunks: List[str]) -> str:
     try:
         context = "\n\n".join(context_chunks)
         prompt = f"""Answer the following question using only the context provided below.
-If the context is insufficient, say "I don't have enough information."
+        If the context is insufficient, say "I don't have enough information."
 
-Context:
-{context}
+        Context:
+        {context}
 
-Question: {question}
-Answer:"""
+        Question: {question}
+        Answer:"""
 
         response = ollama.chat(
             model="llama3",

@@ -110,6 +110,9 @@ python cli.py --rebuild
 
 ## 📬 Contact
 -Rayhan Khan
--📧 Personal: rayhan.khan.2192@gmail.com
--📧 Institutional: rayhan35-831@diu.edu.bd
--[🔗 GitHub Profile](https://github.com/rayhankhan2192)
+
+📧 Personal: rayhan.khan.2192@gmail.com
+
+📧 Institutional: rayhan35-831@diu.edu.bd
+
+[🔗 GitHub Profile](https://github.com/rayhankhan2192)

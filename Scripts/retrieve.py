@@ -16,8 +16,16 @@ def get_top_k_chunks(
     query_embedding = model.encode([question], show_progress_bar=False)[0]
 
     results = collection.query(query_embeddings=[query_embedding], n_results=k)
+
+    documents = results.get("documents", [[]])[0]
+    metadatas = results.get("metadatas", [[]])[0]
+
+    combined = [
+        {"text": doc, "source": meta.get("source", "N/A")}
+        for doc, meta in zip(documents, metadatas)
+    ]
+
     return {
-        "documents": results.get("documents", [[]])[0],
-        "metadatas": results.get("metadatas", [[]])[0],
+        "documents": combined,
         "distances": results.get("distances", [[]])[0],
     }

@@ -1,10 +1,9 @@
-
 import os
 import streamlit as st
-from ingest import load_and_parse_docs
-from embed import embed_and_store
-from retrieve import get_top_k_chunks
-from generate import llm_prompt
+from Scripts.chunks_load_docs import load_and_parse_docs
+from Scripts.embed import embed_and_store
+from Scripts.query_agent import get_top_k_chunks
+from Scripts.query_agent import llm_prompt
 
 os.environ["STREAMLIT_WATCHER_TYPE"] = "poll"
 os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
@@ -68,32 +67,3 @@ if question and question.strip():
                     )
     except Exception as e:
         st.error(f"Error during answer generation: {e}")
-
-
-
-
-
-
-##before code
-
-# # 🧠 Q&A interface
-# st.subheader("Ask a question about the API")
-# question = st.text_input("Your question:")
-
-# if question and question.strip():
-#     try:
-#         context = get_top_k_chunks(question.strip(), k=top_k)
-#         answer = llm_prompt(question, context["documents"])
-
-#         st.markdown("### 🧠 Answer:")
-#         st.success(answer)
-
-#         if show_chunks:
-#             st.markdown("### 🔍 Top Retrieved Chunks:")
-#             for i, doc in enumerate(context["documents"], 1):
-#                 st.markdown(f"**[{i}] Source: {doc.get('source', 'N/A')}**")
-#                 st.code(doc["text"][:1000] + ("..." if len(doc["text"]) > 1000 else ""), language="markdown")
-
-#     except Exception as e:
-#         st.error(f"❌ Error during answer generation: {e}")
-

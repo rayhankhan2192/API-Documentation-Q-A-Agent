@@ -1,9 +1,9 @@
 import os
 import argparse
-from ingest import load_and_parse_docs
-from embed import embed_and_store
-from retrieve import get_top_k_chunks
-from generate import llm_prompt
+from Scripts.chunks_load_docs import load_and_parse_docs
+from Scripts.embed import embed_and_store
+from Scripts.query_agent import get_top_k_chunks
+from Scripts.query_agent import llm_prompt
 import sys
 def main():
     doc_path = r"E:\Python\Machile Learning\2_Artificial Intelligece\1_API Documentation Q&A Agent\docs"

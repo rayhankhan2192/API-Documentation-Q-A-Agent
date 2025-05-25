@@ -2,3 +2,4 @@ venv/
 GarbageCode/
 docs/
 Scripts/embeddings/chromadb/
+nvenv/

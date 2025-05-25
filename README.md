@@ -55,7 +55,9 @@ pip install -r requirements.txt
 ## 5. Run the agent
 
 ```bash
-python main.py
+python main.py # for Gradio UI (Recomended for better interection)
+
+python cli.py --rebuild # For terminal based, it will show all chunks [Don't run without --rebuild]
 ```
 -This will launch a local Gradio web interface at http://127.0.0.1:7860.
 

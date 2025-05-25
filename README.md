@@ -22,3 +22,63 @@ API-Documentation-Q-A-Agent/
 ```
 
 ## Setup & Running the Agent
+
+### 1. Clone the repository
+
+git clone [text][def]
+
+[def]: https://github.com/rayhankhan2192/API-Documentation-Q-A-Agent/tree/main
+
+cd api-docs-qa-agent
+
+### 2. Create and activate a virtual environment (recommended)
+
+python -m venv venv
+# Windows
+.\venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+
+### 3. Install dependencies
+
+pip install -r requirements.txt
+
+
+### 4. Prepare your API documentation files
+
+Place your API docs (PDFs, markdown, etc.) inside the docs/ directory.
+
+### 5. Run the agent
+
+python main.py
+
+-This will launch a local Gradio web interface at http://127.0.0.1:7860.
+
+#In the UI:
+-Use the Embedding Setup tab to parse and embed your documentation.
+
+-Use the Ask a Question tab to query the embedded docs and get answers.
+
+
+### API Documentation & Assumptions
+
+-This project assumes your API documentation files are located in docs/.
+
+-Documents should be in formats supported by the parsing scripts (e.g., PDFs, markdown).
+
+-The chunking logic splits documents into manageable text segments for embedding.
+
+-Assumes a reasonably sized dataset that fits into available memory for embeddings.
+
+
+## Design Choices
+
+Vector Database: Uses Chromadb to store document embeddings (chunks) for fast similarity search.
+
+Embedding Model: SentenceTransformer to convert text chunks into vector representations.
+
+Large Language Model (LLM): Answers questions by prompting an LLM (usees OLLAMA llama3.2) using retrieved document chunks as context.
+
+Framework: Gradio for creating an interactive web UI.
+

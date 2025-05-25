@@ -25,10 +25,9 @@ API-Documentation-Q-A-Agent/
 
 ## 1. Clone the repository
 
-git clone [Github][def]
-
-[def]: https://github.com/rayhankhan2192/API-Documentation-Q-A-Agent/tree/main
-
+```bash
+git clone https://github.com/rayhankhan2192/API-Documentation-Q-A-Agent/tree/main
+```
 ```bash 
 cd api-docs-qa-agent
 

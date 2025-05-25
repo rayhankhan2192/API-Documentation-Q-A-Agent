@@ -33,21 +33,30 @@ def get_top_k_chunks(
     }
 
 
+
 def llm_prompt(question: str, context_chunks: List[str]) -> str:
     try:
         context = "\n\n".join(context_chunks)
         prompt = f"""Answer the following question using only the context provided below.
-        If the context is insufficient, say \"I don't have enough information.\"
+        If the context is insufficient, say exactly: "I don't have enough information to answer."
+        Do NOT add any further information or explanation.
 
         Context:
         {context}
 
         Question: {question}
         Answer:"""
+
         response = ollama.chat(
             model="llama3.2",
             messages=[{"role": "user", "content": prompt}],
         )
-        return response['message']['content'].strip()
+        answer = response['message']['content'].strip()
+        fallback = "I don't have enough information to answer."
+        if fallback in answer:
+            return fallback
+
+        return answer
+
     except Exception as e:
         return f"Failed to get response: {e}"

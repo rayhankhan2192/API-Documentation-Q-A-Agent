@@ -21,47 +21,51 @@ API-Documentation-Q-A-Agent/
 
 ```
 
-## Setup & Running the Agent
+# Setup & Running the Agent
 
-### 1. Clone the repository
+## 1. Clone the repository
 
-git clone [text][def]
+git clone [Github][def]
 
 [def]: https://github.com/rayhankhan2192/API-Documentation-Q-A-Agent/tree/main
 
+```bash 
 cd api-docs-qa-agent
 
-### 2. Create and activate a virtual environment (recommended)
+```
+## 2. Create and activate a virtual environment (recommended)
 
+```bash
 python -m venv venv
 # Windows
 .\venv\Scripts\activate
 # macOS/Linux
 source venv/bin/activate
+```
 
+## 3. Install dependencies
 
-### 3. Install dependencies
-
+```bash
 pip install -r requirements.txt
+```
+## 4. Prepare your API documentation files
 
+-Place your API docs (PDFs, markdown, etc.) inside the docs/ directory.
 
-### 4. Prepare your API documentation files
+## 5. Run the agent
 
-Place your API docs (PDFs, markdown, etc.) inside the docs/ directory.
-
-### 5. Run the agent
-
+```bash
 python main.py
-
+```
 -This will launch a local Gradio web interface at http://127.0.0.1:7860.
 
-#In the UI:
+### In the UI:
 -Use the Embedding Setup tab to parse and embed your documentation.
 
 -Use the Ask a Question tab to query the embedded docs and get answers.
 
 
-### API Documentation & Assumptions
+## API Documentation & Assumptions
 
 -This project assumes your API documentation files are located in docs/.
 

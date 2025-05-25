@@ -115,4 +115,6 @@ Rayhan Khan
 
 📧 Institutional : rayhan35-831@diu.edu.bd
 
+[🔗 LinkedIn Profile](https://www.linkedin.com/in/rayhankhan2192/)
+
 [🔗 GitHub Profile](https://github.com/rayhankhan2192)

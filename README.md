@@ -55,11 +55,16 @@ pip install -r requirements.txt
 
 
 ## 5. Run the agent
-
+-Download and Install ollama https://ollama.com/ 
 ```bash
-python main.py # for Gradio UI (Recomended for better interection)
+# 1. open terminal & active ollama 
+ollama run llama3.2
 
-python cli.py --rebuild # For terminal based, it will show all chunks [Don't run without --rebuild]
+# 2. for Gradio UI (Recommended for better interection)
+python main.py 
+
+# For terminal based, it will also show all chunks [Don't run without --rebuild]
+python cli.py --rebuild 
 ```
 -This will launch a local Gradio web interface at http://127.0.0.1:7860.
 

@@ -2,10 +2,9 @@
 
 A question-answering agent designed to parse, embed, and query API documentation, providing accurate answers based on document content.
 
-----
-
 ## Project Structure
 
+```
 API-Documentation-Q-A-Agent/
 │
 ├── docs/ # API documentation files (input data)
@@ -19,5 +18,7 @@ API-Documentation-Q-A-Agent/
 └── requirements.txt # Python dependencies
 └── README.md # This file
 └── venv # create a venv in your local machine
+
+```
 
 ## Setup & Running the Agent

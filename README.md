@@ -26,7 +26,7 @@ API-Documentation-Q-A-Agent/
 ## 1. Clone the repository
 
 ```bash
-git clone https://github.com/rayhankhan2192/API-Documentation-Q-A-Agent/tree/main
+git clone https://github.com/rayhankhan2192/API-Documentation-Q-A-Agent
 ```
 ```bash 
 cd api-docs-qa-agent
@@ -36,8 +36,10 @@ cd api-docs-qa-agent
 
 ```bash
 python -m venv venv
+
 # Windows
 .\venv\Scripts\activate
+
 # macOS/Linux
 source venv/bin/activate
 ```
@@ -50,6 +52,7 @@ pip install -r requirements.txt
 ## 4. Prepare your API documentation files
 
 -Place your API docs (PDFs, markdown, etc.) inside the docs/ directory.
+
 
 ## 5. Run the agent
 
@@ -66,6 +69,7 @@ python cli.py --rebuild # For terminal based, it will show all chunks [Don't run
 -Use the Ask a Question tab to query the embedded docs and get answers.
 
 
+
 ## API Documentation & Assumptions
 
 -This project assumes your API documentation files are located in docs/.
@@ -75,6 +79,7 @@ python cli.py --rebuild # For terminal based, it will show all chunks [Don't run
 -The chunking logic splits documents into manageable text segments for embedding.
 
 -Assumes a reasonably sized dataset that fits into available memory for embeddings.
+
 
 
 ## Design Choices

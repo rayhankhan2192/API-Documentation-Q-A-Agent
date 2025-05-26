@@ -1,5 +1,5 @@
 venv/
 GarbageCode/
-docs/
-Scripts/embeddings/chromadb/
+embeddings/
 nvenv/
+.gradio/

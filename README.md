@@ -35,13 +35,17 @@ cd api-docs-qa-agent
 ## 2. Create and activate a virtual environment (recommended)
 
 ```bash
+# Create virtual environment
 python -m venv venv
 
-# Windows
+# Acative for Windows
 .\venv\Scripts\activate
 
-# macOS/Linux
+# Active for macOS/Linux
 source venv/bin/activate
+
+# 2. create a folder docs inside the root & save the markdown file inside docs/
+mkdir docs
 ```
 
 ## 3. Install dependencies
@@ -60,7 +64,10 @@ pip install -r requirements.txt
 # 1. open terminal & active ollama 
 ollama run llama3.2
 
-# 2. for Gradio UI (Recommended for better interection)
+# 2. If not docs, create a folder docs inside the root and save the markdown file
+mkdir docs
+
+# 3. for Gradio UI (Recommended for better interection)
 python main.py # This will launch a local Gradio web interface at http://127.0.0.1:7860.
 
 # For terminal based, it will also show all chunks [Don't run without --rebuild]
@@ -106,7 +113,18 @@ python cli.py --rebuild
 
 --CLI Support: Provided via cli.py for terminal-based interaction
 
+## Test Case
+Save Twilio & Stripe API documentation markdown file inside docs/ then Embedding setup from UI click Rebuild Embedding you will see all chunks then ask the quaestion:
 
+```bash
+1. Tell me about Twilio API.
+2. Tell me about Stripe API
+3. What parameters are required for the create_charge endpoint?
+4. How do I set up a webhook for payment events in Stripe?
+5. What does error code card_declined mean in Stripe?
+
+# or ask relavant qestions
+```
 
 ## 📬 Contact
 Rayhan Khan

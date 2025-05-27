@@ -74,18 +74,18 @@ with gr.Blocks(title="API Doc Q&A Agent") as demo:
     with gr.Tab("💬 Ask a Question"):
         with gr.Row():
             question = gr.Textbox(label="Your Question", placeholder="Ask something about the API...", lines=2)
-            top_k = gr.Slider(minimum=1, maximum=10, step=1, value=5, label="Top K Chunks")
             show_chunks = gr.Checkbox(label="Show Retrieved Chunks", value=True)
 
-        submit_button = gr.Button("Get Answer")
-        clear_qa = gr.Button("🧹 Clear")
-
-        answer_box = gr.Textbox(label="🧠 Answer", lines=3)
-        chunk_answer_display = gr.Markdown()
+        with gr.Row():
+            submit_button = gr.Button("Get Answer")
+            clear_qa = gr.Button("🧹 Clear")
+        with gr.Row():
+            answer_box = gr.Textbox(label="🧠 Answer", lines=3)
+            chunk_answer_display = gr.Textbox(label="🔄 Chunks Used for Answer", lines=3)
 
         submit_button.click(
-            fn=answer_question,
-            inputs=[question, top_k, show_chunks],
+            fn=lambda q, show: answer_question(q, 5, show),  # Fixed k=5
+            inputs=[question, show_chunks],
             outputs=[answer_box, chunk_answer_display]
         )
 
@@ -94,8 +94,9 @@ with gr.Blocks(title="API Doc Q&A Agent") as demo:
             outputs=[question, answer_box, chunk_answer_display]
         )
 
-demo.launch()
-#demo.launch(share=True)
+
+#demo.launch()
+demo.launch(share=True)
 
 
 
